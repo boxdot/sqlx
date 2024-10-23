@@ -1,4 +1,4 @@
-use sqlx::{error::ErrorKind, sqlite::Sqlite, Connection, Executor};
+use sqlx::{error::ErrorKind, sqlite::Sqlite, Connection};
 use sqlx_test::new;
 
 #[sqlx_macros::test]

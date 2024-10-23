@@ -422,7 +422,10 @@ impl ConnectionWorker {
     }
 }
 
-fn prepare(conn: &mut ConnectionState, query: &str) -> Result<SqliteStatement<'static>, Error> {
+pub(crate) fn prepare(
+    conn: &mut ConnectionState,
+    query: &str,
+) -> Result<SqliteStatement<'static>, Error> {
     // prepare statement object (or checkout from cache)
     let statement = conn.statements.get(query, true)?;
 

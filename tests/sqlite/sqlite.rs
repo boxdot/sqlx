@@ -800,7 +800,7 @@ async fn test_query_with_update_hook() -> anyhow::Result<()> {
     let mut conn = new::<Sqlite>().await?;
 
     // Using this string as a canary to ensure the callback doesn't get called with the wrong data pointer.
-    let state = format!("test");
+    let state = "test".to_owned();
     conn.lock_handle().await?.set_update_hook(move |result| {
         assert_eq!(state, "test");
         assert_eq!(result.operation, SqliteOperation::Insert);
@@ -810,6 +810,9 @@ async fn test_query_with_update_hook() -> anyhow::Result<()> {
     });
 
     let _ = sqlx::query("INSERT INTO tweet ( id, text ) VALUES ( 3, 'Hello, World' )")
+        .execute(&mut conn)
+        .await?;
+    let _ = sqlx::query("DELETE FROM tweet WHERE id = 3")
         .execute(&mut conn)
         .await?;
 

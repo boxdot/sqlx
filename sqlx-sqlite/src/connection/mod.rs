@@ -22,6 +22,9 @@ use sqlx_core::error::Error;
 use sqlx_core::executor::Executor;
 use sqlx_core::transaction::Transaction;
 
+#[cfg(feature = "sync")]
+pub use sync::SyncSqliteConnection;
+
 use crate::connection::establish::EstablishParams;
 use crate::connection::worker::ConnectionWorker;
 use crate::options::OptimizeOnClose;
@@ -36,6 +39,9 @@ mod executor;
 mod explain;
 mod handle;
 pub(crate) mod intmap;
+
+#[cfg(feature = "sync")]
+mod sync;
 
 mod worker;
 

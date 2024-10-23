@@ -30,6 +30,8 @@ _tls-none = []
 # support offline/decoupled building (enables serialization of `Describe`)
 offline = ["serde", "either/serde"]
 
+sync = []
+
 [dependencies]
 # Runtimes
 async-std = { workspace = true, optional = true }

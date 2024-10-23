@@ -22,6 +22,8 @@ pub use sqlx_core::query_scalar::{query_scalar, query_scalar_with};
 pub use sqlx_core::raw_sql::{raw_sql, RawSql};
 pub use sqlx_core::row::Row;
 pub use sqlx_core::statement::Statement;
+#[cfg(feature = "sync")]
+pub use sqlx_core::sync_executor::SyncExecutor;
 pub use sqlx_core::transaction::{Transaction, TransactionManager};
 pub use sqlx_core::type_info::TypeInfo;
 pub use sqlx_core::types::Type;

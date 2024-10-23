@@ -87,6 +87,9 @@ pub mod migrate;
 #[cfg(feature = "any")]
 pub mod any;
 
+#[cfg(feature = "sync")]
+pub mod sync_executor;
+
 // Implements test support with automatic DB management.
 #[cfg(feature = "migrate")]
 pub mod testing;

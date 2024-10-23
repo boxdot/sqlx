@@ -107,6 +107,8 @@ mysql = ["sqlx-mysql", "sqlx-macros?/mysql"]
 sqlite = ["_sqlite", "sqlx-sqlite/bundled", "sqlx-macros?/sqlite"]
 sqlite-unbundled = ["_sqlite", "sqlx-sqlite/unbundled", "sqlx-macros?/sqlite-unbundled"]
 
+sync = ["sqlx-core/sync", "sqlx-sqlite?/sync"]
+
 # types
 json = ["sqlx-macros?/json", "sqlx-mysql?/json", "sqlx-postgres?/json", "sqlx-sqlite?/json"]
 
@@ -281,6 +283,11 @@ required-features = ["sqlite", "macros", "migrate"]
 name = "sqlite-migrate"
 path = "tests/sqlite/migrate.rs"
 required-features = ["sqlite", "macros", "migrate"]
+
+[[test]]
+name = "sqlite-sync"
+path = "tests/sqlite/sync.rs"
+required-features = ["sqlite", "macros", "sync"]
 
 [[test]]
 name = "sqlite-rustsec"
